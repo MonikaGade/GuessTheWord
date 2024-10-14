@@ -6,7 +6,7 @@
 <h3>Basically this project is a small project where you can get some understanding about the spring boot and spring mvc<h3>
 <hr>
 <h4>In summary this project is about guessing a random word that has been displayed</h4>
-<li>
+<li type="1">
 <ul>Basically, Here you have 5 challenges to choose a character</ul>
 <ul>If the character is choosed correct then it will be displayed</ul>
 <ul>Or,the attempts of the guessing the character limit will be decreased</ul>
