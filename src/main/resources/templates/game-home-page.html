@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Guess the game</title>
+	<style>
+		:root {
+			--color: white;
+		}
+
+		#reload {
+			color: var(--color);
+			background-color: red;
+			border: none;
+			height: 30px;
+			width: 70px;
+			font-weight: 600;
+			border-radius: 10px;
+			letter-spacing: 1.5;
+		}
+
+		#try {
+			color: var(--color);
+			background-color: green;
+			height: 30px;
+			width: 70px;
+			border:none;
+			font-weight: 600;
+			border-radius: 10px;
+			letter-spacing: 1.5;
+		}
+		input[type="text"]{
+			width:400px;
+			height:40px;
+			padding:2px;
+			outline: none;
+			border:none;
+			border-bottom: 1px solid black;
+			margin-left:10px
+		}
+	</style>
+	<script th:inline="javascript">
+		window.onload = function checkIfGameOver() {
+			var remainingTrailsLeft = [[${triesRemaining}]];
+			if (remainingTrailsLeft === 0) {
+
+				alert("Game Over");
+				document.getElementById("guesschar").disabled = true;
+				document.getElementById("try").disabled = true;
+
+			}
+		}
+		function reload() {
+			window.location.href = "http://localhost:8080/game-reload"
+		}
+
+	</script>
+</head>
+
+<body>
+	<h1 align="center">Guess the game</h1>
+	<h2 align="center" th:text="${wordtodisplay}"></h2>
+	<h2 align="right" th:text="'Tries Remaining : ' + ${triesRemaining}">Number of tries left </h2>
+	<hr>
+	<input type="button" value="Reload" style="float:right" id="reload" onclick="reload()">
+	<div align="center">
+		<form action="/game-home" method="GET">
+			<label id="guessChar">Guess a character:</label>
+			<input type="text" id="guesschar" name="guessChar" />
+			<input type="submit" value="try" id="try" />
+		</form>
+	</div>
+</body>
+
+</html>
